@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <header>
+      <h1>Little Sound Garden</h1>
+      <p>An accessible nature-themed sound experience</p>
+    </header>
+
+    <main>
+      <section aria-labelledby="sounds-heading">
+        <h2 id="sounds-heading">Explore the Sounds</h2>
+        <p>Use Tab, Arrow keys, or Number keys 1-6 to navigate the sounds.</p>
+
+        <div id="soundboard">
+          <button type="button" data-sound="rain">Rain</button>
+          <button type="button" data-sound="ocean">Ocean</button>
+          <button type="button" data-sound="birds">Birds</button>
+        </div>
+      </section>
+
+      <p id="status" role="status" aria-live="polite"></p>
+    </main>
+
+    <footer>
+      <p>Made with accessibility in mind.</p>
+    </footer>
+  </body>
+</html>
