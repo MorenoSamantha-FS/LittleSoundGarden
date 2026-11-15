@@ -68,3 +68,89 @@ main ul {
   margin: 1rem auto;
   padding-left: 2rem;
 }
+/* Soundboard Grid */
+#soundboard {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  max-width: 600px;
+  margin: 2rem auto 0;
+}
+
+/* Sound Buttons */
+#soundboard button {
+  background-color: var(--moss-green);
+  color: var(--white);
+  border: 2px solid var(--sage-green);
+  border-radius: 1rem;
+  padding: 2rem 1rem;
+  min-height: 110px;
+  font: inherit;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition:
+    background-color 0.2s,
+    transform 0.2s;
+}
+
+/* Mouse Hover */
+#soundboard button:hover {
+  background-color: #587d69;
+  transform: translateY(-3px);
+}
+
+/* Keyboard Focus */
+#soundboard button:focus-visible {
+  outline: 4px solid #ffe18a;
+  outline-offset: 4px;
+}
+
+/* Button Press */
+#soundboard button:active {
+  transform: scale(0.97);
+}
+
+/* Accessible Playback Status */
+#status {
+  text-align: center;
+  min-height: 2rem;
+  margin: 1.5rem 0;
+  font-size: 1.1rem;
+  color: var(--sage-green);
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 1.5rem;
+  font-size: 0.9rem;
+}
+
+/* Responsive Layout */
+@media (max-width: 600px) {
+  main section {
+    padding: 1.25rem;
+  }
+
+  #soundboard {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  #soundboard button {
+    padding: 1.5rem 0.5rem;
+    font-size: 1rem;
+  }
+}
+
+/* Accessibility: Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  #soundboard button {
+    transition: none;
+  }
+
+  #soundboard button:hover,
+  #soundboard button:active {
+    transform: none;
+  }
+}
