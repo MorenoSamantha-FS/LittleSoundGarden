@@ -1,7 +1,7 @@
 // Imports functions from sounds.js
 import { createSoundButtons, playSound } from "./sounds.js";
 
-//IIFE to initialize the soundboard and handle clicks and keyboard navgiation
+//IIFE to initialize the soundboard and handle clicks and keyboard navigation
 (() => {
   createSoundButtons();
 
@@ -37,7 +37,7 @@ import { createSoundButtons, playSound } from "./sounds.js";
       return;
     }
 
-    // Handles number key navigation 1-6
+    // Handles number key shortcuts
     if (numberKeys.includes(event.key)) {
       const numberIndex = Number(event.key) - 1;
       const button = buttons[numberIndex];
@@ -62,17 +62,14 @@ import { createSoundButtons, playSound } from "./sounds.js";
     // Initializes nextIndex to the current button's index
     let nextIndex = currentIndex;
 
-    if (event.key === "ArrowRight") {
+    // Right and Down move to the next sound
+    if (event.key === "ArrowRight" || event.key === "ArrowDown") {
       nextIndex = currentIndex + 1;
     }
-    if (event.key === "ArrowLeft") {
+
+    // Left and Up move to the previous sound
+    if (event.key === "ArrowLeft" || event.key === "ArrowUp") {
       nextIndex = currentIndex - 1;
-    }
-    if (event.key === "ArrowUp") {
-      nextIndex = currentIndex - 3;
-    }
-    if (event.key === "ArrowDown") {
-      nextIndex = currentIndex + 3;
     }
 
     // Conditional check to handle wrap-around when reaching the end of the array in either direction

@@ -45,17 +45,37 @@ export function playSound(soundName) {
   }
 
   // Create and play the selected sound.
-  currentAudio = new Audio(`./assets/audio/${soundName}.mp3`);
+  const audio = new Audio(`./assets/audio/${soundName}.mp3`);
+  currentAudio = audio;
   currentSound = soundName;
 
   // Resets the playback variables when the audio finishes naturally
-  currentAudio.addEventListener("ended", () => {
+  audio.addEventListener("ended", () => {
+    if (currentAudio !== audio) {
+      return;
+    }
+
     currentAudio = null;
     currentSound = null;
     status.textContent = `[${soundName} sounds finished playing]`;
   });
 
   // Starts playing the selected audio
-  currentAudio.play();
-  status.textContent = `[${soundName} sounds playing]`;
+  audio
+    .play()
+    .then(() => {
+      if (currentAudio === audio) {
+        status.textContent = `[${soundName} sounds playing]`;
+      }
+    })
+    .catch((error) => {
+      if (currentAudio !== audio) {
+        return;
+      }
+
+      currentAudio = null;
+      currentSound = null;
+      status.textContent = `[Unable to play ${soundName} sounds]`;
+      console.error("Audio playback failed:", error);
+    });
 }
