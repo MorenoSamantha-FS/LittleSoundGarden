@@ -24,6 +24,9 @@ let currentAudio = null;
 let currentSound = null;
 
 export function playSound(soundName) {
+  // Selects the element used for screen-reader announcements
+  const status = document.querySelector("#status");
+
   // If the same sound is clicked again, stop it.
   if (currentSound === soundName) {
     currentAudio.pause();
@@ -31,6 +34,7 @@ export function playSound(soundName) {
 
     currentAudio = null;
     currentSound = null;
+    status.textContent = `[${soundName} sounds stopped]`;
     return;
   }
 
@@ -48,8 +52,10 @@ export function playSound(soundName) {
   currentAudio.addEventListener("ended", () => {
     currentAudio = null;
     currentSound = null;
+    status.textContent = `[${soundName} sounds finished playing]`;
   });
 
   // Starts playing the selected audio
   currentAudio.play();
+  status.textContent = `[${soundName} sounds playing]`;
 }
