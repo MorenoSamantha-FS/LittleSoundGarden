@@ -29,8 +29,22 @@ import { createSoundButtons, playSound } from "./sounds.js";
     // Defines arrow keys used for soundboard navigation
     const arrowKeys = ["ArrowRight", "ArrowLeft", "ArrowUp", "ArrowDown"];
 
-    // Exits if any other key is pressed
-    if (!arrowKeys.includes(event.key)) {
+    // Defines number keys for direct sound selection
+    const numberKeys = ["1", "2", "3", "4", "5", "6"];
+
+    // Exits if key is not an arrow key or a number key
+    if (!arrowKeys.includes(event.key) && !numberKeys.includes(event.key)) {
+      return;
+    }
+
+    // Handles number key navigation 1-6
+    if (numberKeys.includes(event.key)) {
+      const numberIndex = Number(event.key) - 1;
+      const button = buttons[numberIndex];
+
+      const soundName = button.dataset.sound;
+      playSound(soundName);
+
       return;
     }
 
