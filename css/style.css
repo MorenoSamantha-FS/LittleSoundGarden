@@ -1,18 +1,70 @@
-/* Page Color Pallette */
+/* Little Sound Garden - Color Palette */
 :root {
   --forest-dark: #172a28;
   --forest-medium: #28453e;
-  --forest-light: #456858;
+  --moss-green: #456858;
   --sage-green: #a5d7a0;
   --cream: #f5e8c9;
   --white: #ffffff;
 }
 
-/* Page Setup */
+/* General Page Styling */
 * {
   box-sizing: border-box;
 }
 
 body {
   margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(160deg, #172a28, #28453e);
+  color: var(--cream);
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.6;
+}
+
+/* Header */
+header {
+  text-align: center;
+  padding: 3rem 1rem 2rem;
+}
+
+h1 {
+  color: var(--sage-green);
+  font-size: 3rem;
+  margin: 0 0 0.5rem;
+}
+
+header p {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+/* Main Content */
+main {
+  width: min(90%, 900px);
+  margin: 0 auto;
+  flex: 1;
+}
+
+main section {
+  background-color: var(--forest-medium);
+  border: 2px solid var(--moss-green);
+  border-radius: 1.5rem;
+  padding: 2rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+h2 {
+  color: var(--cream);
+  text-align: center;
+  margin-top: 0;
+}
+
+/* Keyboard Instructions */
+main ul {
+  max-width: 600px;
+  margin: 1rem auto;
+  padding-left: 2rem;
 }
