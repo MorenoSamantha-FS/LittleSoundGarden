@@ -14,3 +14,9 @@ export function createSoundButtons() {
     soundboard.appendChild(button);
   });
 }
+
+// create reusable function to recieve sound name
+export function playSound(soundName) {
+  const audio = new Audio(`./assets/audio/${soundName}.mp3`);
+  audio.play();
+}
