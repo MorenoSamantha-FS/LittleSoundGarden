@@ -44,5 +44,12 @@ export function playSound(soundName) {
   currentAudio = new Audio(`./assets/audio/${soundName}.mp3`);
   currentSound = soundName;
 
+  // Resets the playback variables when the audio finishes naturally
+  currentAudio.addEventListener("ended", () => {
+    currentAudio = null;
+    currentSound = null;
+  });
+
+  // Starts playing the selected audio
   currentAudio.play();
 }
