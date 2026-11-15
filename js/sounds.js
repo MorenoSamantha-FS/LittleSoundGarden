@@ -1,21 +1,25 @@
-// Create remaining sound buttons
+// Stores the list of extra sounds to be added to the soundboard
 const extraSounds = ["Wind", "Fire", "Forest"];
 
-// Export function to create sound buttons
+// Exports function to dynamically create sound buttons 3-6
 export function createSoundButtons() {
   const soundboard = document.querySelector("#soundboard");
 
+  // Loops through the extra sounds array and creates a button for each sound
   extraSounds.forEach((sound) => {
     const button = document.createElement("button");
 
+    // Sets the button type to "button" to prevent form submission by default
     button.type = "button";
     button.textContent = sound;
+
+    // Changes the sound name to lowercase for the data attribute
     button.dataset.sound = sound.toLowerCase();
     soundboard.appendChild(button);
   });
 }
 
-// Create Variables to control the audio playback
+// Tracks the currently selected audio object and sound name
 let currentAudio = null;
 let currentSound = null;
 

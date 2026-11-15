@@ -1,7 +1,7 @@
 // Imports functions from sounds.js
 import { createSoundButtons, playSound } from "./sounds.js";
 
-//IIFE to initialize the soundboard and handle button clicks and keyboard navgiation
+//IIFE to initialize the soundboard and handle clicks and keyboard navgiation
 (() => {
   createSoundButtons();
 
@@ -11,9 +11,10 @@ import { createSoundButtons, playSound } from "./sounds.js";
   const soundboard = document.querySelector("#soundboard");
 
   soundboard.addEventListener("click", (event) => {
-    // Finds the closest button element to the clicked target while ignoring clicks outside buttons
+    // Finds the closest button associated with the clicked element
     const button = event.target.closest("button");
 
+    // Exits if the click did not originate within a soundboard button
     if (!button || !soundboard.contains(button)) {
       return;
     }
@@ -25,18 +26,18 @@ import { createSoundButtons, playSound } from "./sounds.js";
 
   // Event Listener for arrow key navigation
   document.addEventListener("keydown", (event) => {
-    // Catch-functions for if user presses unexpected keys
+    // Defines arrow keys used for soundboard navigation
     const arrowKeys = ["ArrowRight", "ArrowLeft", "ArrowUp", "ArrowDown"];
 
-    // User hits non-arrow buttons
+    // Exits if any other key is pressed
     if (!arrowKeys.includes(event.key)) {
       return;
     }
 
-    // Finds element currently receiving focus, converts to array, stores inside currentIndex
+    // Converts button collection to an array and find the focused button's index
     const currentIndex = Array.from(buttons).indexOf(document.activeElement);
 
-    // Exits function if currentIndex is outside the soundboard index
+    // Exits if the currently focused element is not a soundboard button
     if (currentIndex === -1) {
       return;
     }
@@ -44,7 +45,7 @@ import { createSoundButtons, playSound } from "./sounds.js";
     // Prevents default arrow behavior
     event.preventDefault();
 
-    // Establishes nextIndex behavior
+    // Initializes nextIndex to the current button's index
     let nextIndex = currentIndex;
 
     if (event.key === "ArrowRight") {
@@ -60,7 +61,7 @@ import { createSoundButtons, playSound } from "./sounds.js";
       nextIndex = currentIndex + 3;
     }
 
-    // Handle wrap-around function when reaching the end of the array in either direction
+    // Conditional check to handle wrap-around when reaching the end of the array in either direction
     if (nextIndex >= buttons.length) {
       nextIndex = 0;
     }
