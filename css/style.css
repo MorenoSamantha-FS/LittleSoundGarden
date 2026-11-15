@@ -1,0 +1,18 @@
+/* Page Color Pallette */
+:root {
+  --forest-dark: #172a28;
+  --forest-medium: #28453e;
+  --forest-light: #456858;
+  --sage-green: #a5d7a0;
+  --cream: #f5e8c9;
+  --white: #ffffff;
+}
+
+/* Page Setup */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
