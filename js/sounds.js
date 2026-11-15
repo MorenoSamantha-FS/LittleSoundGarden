@@ -15,8 +15,30 @@ export function createSoundButtons() {
   });
 }
 
-// create reusable function to recieve sound name
+// Create Variables to control the audio playback
+let currentAudio = null;
+let currentSound = null;
+
 export function playSound(soundName) {
-  const audio = new Audio(`./assets/audio/${soundName}.mp3`);
-  audio.play();
+  // If the same sound is clicked again, stop it.
+  if (currentSound === soundName) {
+    currentAudio.pause();
+    currentAudio.currentTime = 0;
+
+    currentAudio = null;
+    currentSound = null;
+    return;
+  }
+
+  // If another sound is already playing, stop it.
+  if (currentAudio) {
+    currentAudio.pause();
+    currentAudio.currentTime = 0;
+  }
+
+  // Create and play the selected sound.
+  currentAudio = new Audio(`./assets/audio/${soundName}.mp3`);
+  currentSound = soundName;
+
+  currentAudio.play();
 }
